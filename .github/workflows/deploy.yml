@@ -26,11 +26,13 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm install
+      - name: Clean and Install dependencies
+        run: |
+          rm -rf node_modules
+          npm install
 
       - name: Build
-        run: npm run build
+        run: npx vite build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
